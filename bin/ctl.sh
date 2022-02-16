@@ -17,6 +17,8 @@ then
     cp -r "${DJANGO_PATH}/wedding/" "${WEBSITE_PATH}/." 
     cp -r "${DJANGO_PATH}/wedding_website/" "${WEBSITE_PATH}/." 
     export DOCKER_BUILDKIT=1
+    export COMPOSE_DOCKER_CLI_BUILD=1
+
 fi
 export COMPOSE_PROJECT_NAME="wedding"
 COMPOSE_PATH="${BASE_PATH}/docker-compose"
