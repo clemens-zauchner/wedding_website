@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+
+  nginx:
+    build:
+      context: ../docker/nginx
+      dockerfile: nginx.dockerfile
+    image: wedding-nginx
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - default
+    depends_on:
+      - website
+    volumes:
+      - "${BASE_PATH}/data/static:/home/nginx/static"
+
+  website:
+    build:
+      context: ../docker/website
+      dockerfile: website.dockerfile
+    image: wedding-website
+    ports:
+      - 8000:8000
+    networks:
+      - default
+    env_file:
+      - "${DJANGO_CONF_FILE}"
+      - "${DB_CONF_FILE}"
+    depends_on:
+      - postgres
+    volumes:
+      - "${BASE_PATH}/data/static:/home/wedding/static"
+
+  postgres:
+    build:
+      context: ../docker/postgres
+      dockerfile: postgres.dockerfile
+    image: wedding-postgres
+    networks:
+      - default
+    env_file:
+      - "${DB_CONF_FILE}"
+    volumes:
+      - ${BASE_PATH}/data/postgres/data:/var/lib/postgresql/data
+
+networks:
+  default:
+    name: "${COMPOSE_PROJECT_NAME}"

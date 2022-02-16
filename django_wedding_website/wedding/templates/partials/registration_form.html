@@ -1,0 +1,31 @@
+{% extends "registration.html" %}
+{% block form_content %}
+<div class="form-container">
+    <form action="{% url 'wedding-register-form' %}" method="POST">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        {% for form in formset.forms %}
+        <div class="dynamic">
+            <div>{{ form.non_field_errors }}</div>
+            {% for field in form.visible_fields %}
+            <div class="form-row">
+                {% if field.field.required %}
+                <div class="form-col-25"><b>{{ field.label_tag }}*</b></div>
+                <div class="form-col-75  {% if field.errors %}{{ form.error_css_class }}{% endif %}">{{ field }}
+                </div>
+                {% else %}
+                <div class="form-col-25">{{ field.label_tag }}</div>
+                <div class="form-col-75 {% if field.errors %}{{ form.error_css_class }}{% endif %}">{{ field }}
+                </div>
+                {% endif %}
+                <div class="error-message">{{ field.errors }}</div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+        <div class="form-row">
+            <button type="submit" class="form-button">Register</button>
+        </div>
+    </form>
+</div>
+{% endblock form_content %}
