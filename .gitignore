@@ -263,4 +263,4 @@ pip-selfcheck.json
 **django_wedding_website/wedding/static/bigday/images
 !bin/ctl.sh
 
-django_wedding_website/wedding_website/localsettings.py
+
