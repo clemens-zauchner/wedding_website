@@ -16,6 +16,8 @@ services:
       - website
     volumes:
       - "${BASE_PATH}/data/static:/home/nginx/static"
+      - "${BASE_PATH}/cert/etc/live/ckwedding.info/fullchain.pem:/etc/letsencrypt/live/ckwedding.info/fullchain.pem"
+      - "${BASE_PATH}/cert/etc/live/ckwedding.info/privkey.pem:/etc/letsencrypt/live/ckwedding.info/privkey.pem"
 
   website:
     build:
