@@ -14,7 +14,7 @@ mkdir -p "${CERT_ETC_PATH}"
 docker run -it --rm --name certbot \
             -p 80:80 \
             -p 443:443 \
-            -v "${CERT_VAR_PATH}:/etc/letsencrypt" \
+            -v "${CERT_ETC_PATH}:/etc/letsencrypt" \
             -v "${CERT_VAR_PATH}:/var/lib/letsencrypt" \
             certbot/certbot certonly
 
