@@ -36,7 +36,7 @@ class BaseModel(RootModel):
 
 # from phonenumber_field.modelfields import PhoneNumberField
 MEALS = [
-    ("beef", "Meat balls"),
+    ("beef", "Minced meat patties (Fleischlaibchen)"),
     ("fish", "Char (Saibling, Fish)"),
     ("vegetarian", "Vegetarian dumpling tris"),
     ("child", "Children's menu: Schnitzel"),

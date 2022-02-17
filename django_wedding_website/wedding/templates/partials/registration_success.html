@@ -1,4 +1,12 @@
 {% extends "registration.html" %}
 {% block form_content %}
-<p>Registration successful. Go <a href="{% url 'home' %}">back</a>.</p>
-{% endblock form_content %}
+<!-- <p>Registration successful. Go <a href="{% url 'home' %}">back</a>.</p> -->
+<!-- <div class="jumbotron"> -->
+<h2 class="display-4">Hooray</h1>
+    <p class="lead">Thank you for your registration. We can't wait to see you in May.</p>
+    <hr class="my-4">
+    <p class="lead">
+        <a class="form-button" href="{% url 'home' %}" role="button">Go back</a>
+    </p>
+    <!-- </div> -->
+    {% endblock form_content %}
