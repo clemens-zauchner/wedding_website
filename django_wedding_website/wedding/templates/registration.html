@@ -51,7 +51,10 @@
 <!-- Formset function -->
 <script type="text/javascript">
     $(function () {
-        $('.dynamic').formset();
+        $('.dynamic').formset({
+            addText: 'add guest',
+            deleteText: 'remove guest'
+        });
     })
 </script>
 {% endblock %}
