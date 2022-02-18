@@ -1,5 +1,7 @@
 {% extends "registration.html" %}
 {% block form_content %}
+<h2 class="section-heading">Registration</h2>
+<hr>
 <div class="form-container">
     <form action="{% url 'wedding-register-form' %}" method="POST">
         {% csrf_token %}
