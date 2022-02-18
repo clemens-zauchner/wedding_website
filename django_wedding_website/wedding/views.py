@@ -42,4 +42,4 @@ def register(request):
 
 
 def success(request):
-    return render(request, "partials/registration_success.html")
+    return render(request, "partials/registration_success.html", ctx)
