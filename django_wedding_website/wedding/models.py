@@ -34,12 +34,12 @@ class BaseModel(RootModel):
     modified = models.DateTimeField(auto_now=True, editable=False)
 
 
-# from phonenumber_field.modelfields import PhoneNumberField
 MEALS = [
     ("beef", "Minced meat patties (Fleischlaibchen)"),
     ("fish", "Char (Saibling, Fish)"),
     ("vegetarian", "Vegetarian dumpling tris"),
     ("child", "Children's menu: Schnitzel"),
+    ("baby", "Baby's menu: brought by my parents"),
 ]
 
 

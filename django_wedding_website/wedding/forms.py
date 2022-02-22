@@ -41,10 +41,16 @@ class RegistrationForm(forms.ModelForm):
         cleaned_data = super().clean()
         is_attending = cleaned_data.get("is_attending")
         meal = cleaned_data.get("meal")
+        is_child = cleaned_data.get("is_child")
 
         if is_attending and not meal:
             # Only do something if both fields are valid so far.
             self.add_error("meal", ValidationError("Please select a meal option."))
+
+        if not is_child and meal == "baby":
+            self.add_error(
+                "meal", ValidationError("The baby menu is selected for an adult guest.")
+            )
 
 
 BaseRegistrationFormSet = forms.modelformset_factory(
