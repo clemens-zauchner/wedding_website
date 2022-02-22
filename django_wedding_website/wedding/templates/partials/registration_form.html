@@ -2,6 +2,9 @@
 {% block form_content %}
 <h2 class="section-heading">Registration</h2>
 <hr>
+<p class="mb-0">Please use the form below to register for our wedding. You can register your
+    plus one and / or children at the same time by clicking the "Add guest" link below the form.
+</p>
 <div class="form-container">
     <form action="{% url 'wedding-register-form' %}" method="POST">
         {% csrf_token %}
