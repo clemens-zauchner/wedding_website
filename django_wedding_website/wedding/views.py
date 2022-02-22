@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.forms.utils import ErrorList
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.db.models import Count, Q
 from .models import Registration, Guest
 from .forms import RegistrationFormSet
 
@@ -42,4 +44,30 @@ def register(request):
 
 
 def success(request):
+
     return render(request, "partials/registration_success.html", ctx)
+
+
+@login_required
+def dashboard(request):
+    attending_guests = Guest.objects.filter(is_attending=True)
+    meal_breakdown = (
+        attending_guests.exclude(meal=None).values("meal").annotate(count=Count("*"))
+    )
+
+    return render(
+        request,
+        "dashboard.html",
+        context={
+            "couple_name": settings.BRIDE_AND_GROOM,
+            "guests": Guest.objects.filter(is_attending=True).count(),
+            "adult_guests": Guest.objects.filter(is_attending=True)
+            .filter(is_child=False)
+            .count(),
+            "child_guests": Guest.objects.filter(is_attending=True)
+            .filter(is_child=True)
+            .count(),
+            "not_coming_guests": Guest.objects.filter(is_attending=False).count(),
+            "meal_breakdown": meal_breakdown,
+        },
+    )

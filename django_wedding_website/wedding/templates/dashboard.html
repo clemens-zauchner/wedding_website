@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block page_content %}
+<div class="container" id="main">
+    <h1>Dashboard</h1>
+    <table class="table table-striped">
+        <tr>
+            <td>Total Guests Attending</td>
+            <td>{{ guests }}</td>
+        </tr>
+        <tr>
+            <td>Adult Guests</td>
+            <td>{{ adult_guests }}</td>
+        </tr>
+        <tr>
+            <td>Children Guests</td>
+            <td>{{ child_guests }}</td>
+        </tr>
+        <tr>
+            <td>Not Coming</td>
+            <td>{{ not_coming_guests }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>Meal choices</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        {% for meal in meal_breakdown %}
+                        <th>{{ meal.meal }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for meal in meal_breakdown %}
+                        <td>{{ meal.count }}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
