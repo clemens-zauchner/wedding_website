@@ -36,6 +36,7 @@ class GuestInline(admin.TabularInline):
 
 @admin.register(Guest)
 class GuestAdmin(BaseAdmin):
+    ordering = ("created",)
     list_display = ("registration", "first_name", "last_name")
     list_filter = ("is_attending", "is_child", "meal")
 
